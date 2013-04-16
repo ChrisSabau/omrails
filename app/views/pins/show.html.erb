@@ -1,11 +1,16 @@
 <div class="row"> <%# Row Bootstrap class %>
 	<div class="span6 offset3"> <%# Span Bootstrap class %>
 		<div class="well">
-		<p>
-			  <%= @pin.description %>
-		</p>
-			<%= link_to 'Edit', edit_pin_path(@pin) %> |
-			<%= link_to 'Back', pins_path %>	
+			<p>
+				  <%= @pin.description %>
+			</p>
+			<p>
+				  <%= @pin.user.name %>   <%# grabs user name--select user from pins where pinid = CreatedPinID %>
+			</p>
+			<% if current_user = @pin.user %> <%# must use @ sigh to indicate global variable. You dont need to do that in parchals %>
+				<%= link_to 'Edit', edit_pin_path(@pin) %> |
+				<%= link_to 'Back', pins_path %>	
+			<%end%>
 		</div>
 	</div>
 </div>
